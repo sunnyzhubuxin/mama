@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <title>mama</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Slicebox - 3D Image Slider with Fallback" />
+        <meta name="keywords" content="jquery, css3, 3d, webkit, fallback, slider, css3, 3d transforms, slices, rotate, box, automatic" />
+		<meta name="author" content="Pedro Botelho for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<link rel="stylesheet" href="http://dreamsky.github.io/main/blog/common/init.css">
+				
+		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			
+
+			<div class="wrapper">
+
+				<ul id="sb-slider" class="sb-slider">
+					<li>
+						<a href="# target="_blank"><img src="images/11.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>观海：大海与蓝天相连，人头涌涌海中现，汹涌海浪拍打岸，朵朵浪花肆意窜，徐徐海风轻拂面！</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/22.jpg" alt="image2"/></a>
+						<div class="sb-description">
+							<h3>人生的路不都是平坦的</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/33.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>前途是光明的</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/44.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>笑看人生，鲜花怒放</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/55.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>登上广山山顶，释放昨日劳作，放飞愉悦心情，展望瑰丽人生！</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/66.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>你是爸妈的宝贝，不会让你委屈，你是我们的心肝，把你捧在手中间，你的一点一滴，深深地印在我们心里，满满的都是爱的记忆！</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/77.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>游建昌龙潭大峡谷：周六好休闲，一行十四人踏着初秋的脚步，乘自驾车前往建昌龙谭大峡谷，沿着蜿蜒的石阶进入峡谷，我们顺着溪边走，溪水里映着蓝天和如絮的云的影子，溪水有时涓涓细流，有时奔腾，鱼儿在水中跳跃。从石林出发乘船观赏龙潭瀑布，峡谷两岸峭石林立，湿淋淋的绿，宛如泼墨的山水，瀑布飞流直下，如烟如雾。下船后沿着石阶登上峡谷顶点，环顾四周，映入眼帘的满是醉人的绿，远处起伏的山峦好似长龙飞舞。走出峡谷，去农家院吃农家饭，农家鸡蛋糕、小河鱼、咸鸭蛋美美享受。带着愉悦的心情返程，返家途中巧遇阵雨，雨过天晴，两道彩虹横空，美极了！沿途的农家院炊烟升起，结束快乐之旅，回到温馨可爱的家！</h3>
+						</div>
+					</li>
+					<li>
+						<a href="#" target="_blank"><img src="images/88.jpg" alt="image1"/></a>
+						<div class="sb-description">
+							<h3>好喜欢大树，一边在地上，一边埋地里，一面表露，一面深藏，一边享受阳光，一边让别人乘凉！</h3>
+						</div>
+					</li>
+				</ul>
+
+				<div id="shadow" class="shadow"></div>
+
+				<div id="nav-arrows" class="nav-arrows">
+					<a href="#">Next</a>
+					<a href="#">Previous</a>
+				</div>
+
+				<div id="nav-options" class="nav-options">
+					<span id="navPlay">Play</span>
+					<span id="navPause">Pause</span>
+				</div>
+
+			</div><!-- /wrapper -->
+
+			<div class="footer-banner" style="width:728px; margin:30px auto"></div>
+		</div>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slicebox.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				
+				var Page = (function() {
+
+					var $navArrows = $( '#nav-arrows' ).hide(),
+						$navOptions = $( '#nav-options' ).hide(),
+						$shadow = $( '#shadow' ).hide(),
+						slicebox = $( '#sb-slider' ).slicebox( {
+							onReady : function() {
+
+								$navArrows.show();
+								$navOptions.show();
+								$shadow.show();
+
+							},
+							orientation : 'h',
+							cuboidsCount : 3
+						} ),
+						
+						init = function() {
+
+							initEvents();
+							
+						},
+						initEvents = function() {
+
+							// add navigation events
+							$navArrows.children( ':first' ).on( 'click', function() {
+
+								slicebox.next();
+								return false;
+
+							} );
+
+							$navArrows.children( ':last' ).on( 'click', function() {
+								
+								slicebox.previous();
+								return false;
+
+							} );
+
+							$( '#navPlay' ).on( 'click', function() {
+								
+								slicebox.play();
+								return false;
+
+							} );
+
+							$( '#navPause' ).on( 'click', function() {
+								
+								slicebox.pause();
+								return false;
+
+							} );
+
+						};
+
+						return { init : init };
+
+				})();
+
+				Page.init();
+
+			});
+		</script>
+	
+	</body>
+</html>	
