@@ -28,6 +28,8 @@
 }
 
 .sb-description {
+	max-height:90%;
+	max-width: 100%;
 	padding: 20px;
 	bottom: 10px;
 	left: 10px;
