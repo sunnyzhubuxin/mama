@@ -12,6 +12,10 @@
 .sb-description h3 {
 	/*font-size: 20px;*/
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 7;
+         overflow: hidden;
 }
 
 .sb-description h3 a {
